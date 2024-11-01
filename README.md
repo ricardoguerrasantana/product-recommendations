@@ -1,16 +1,16 @@
-# Dijkstra's Algorithm in JavaScript
+# Dijkstra Algorithm for Product Recommendations
 
-This repository contains an implementation of Dijkstra's algorithm in JavaScript for finding the shortest path in a weighted graph. The algorithm is used to calculate the minimum distances from a starting node to all other nodes in the graph.
+This repository contains a JavaScript implementation of Dijkstra's algorithm, tailored for product recommendation purposes in an e-commerce setting. The algorithm calculates the shortest paths (minimum distances) from a specified starting product to all other products in a graph, based on their similarity scores.
 
 ## Overview
 
 Dijkstra's algorithm is a famous algorithm used for finding the shortest path between nodes in a graph, which may represent, for example, road networks. This implementation works with an adjacency matrix, where each entry represents the weight of the edge (or similarity score) between two nodes.
 
-### Features
+## Features
 
-- Finds the shortest path from a given starting node to all other nodes in a graph.
-- Handles graphs represented as adjacency matrices.
-- Uses a priority-based approach to determine the shortest paths.
+- **Product Recommendations**: Uses similarity scores between products to avoid recommending overly similar items.
+- **Graph Representation**: Products are represented as nodes in a graph, with edges indicating similarity scores.
+- **Adaptability**: This implementation can be used in various graph-based recommendation systems beyond e-commerce.
 
 ## Algorithm Explanation
 
@@ -23,7 +23,7 @@ The algorithm works as follows:
 
 The result is an array of minimum distances from the starting node to each other node.
 
-## Code
+## Function
 
 The main function `dijkstra` takes two parameters:
 
@@ -79,58 +79,71 @@ function dijkstra(graph, startProduct) {
 }
 ```
 
-## Example Usage
+## Usage
 
-Here is an example of how to use the `dijkstra` function:
+### Prerequisites
 
-```javascript
-let graph = [
-  [0, 2, 0, 1, 0],
-  [2, 0, 3, 0, 0],
-  [0, 3, 0, 4, 0],
-  [1, 0, 4, 0, 5],
-  [0, 0, 0, 5, 0],
-]
+- Node.js installed on your system
 
-let startProduct = 0
-let result = dijkstra(graph, startProduct)
-
-console.log("Minimum distances from Product 0:", result)
-```
-
-Output:
-
-```
-Minimum distances from Product 0: [0, 2, 5, 1, 6]
-```
-
-## Prerequisites
-
-To run this code, you need:
-
-- A JavaScript environment (Node.js or a browser console).
-
-## Running the Code
+### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/ricardoguerrasantana/product-recommendations.git
-   ```
-2. Navigate to the project directory:
-   ```bash
    cd product-recommendations
    ```
-3. Create an HTML file or use Node.js to run the JavaScript code.
 
-## Contributing
+2. Install dependencies:
 
-Contributions are welcome! If you have suggestions for improvements, please open an issue or submit a pull request.
+   ```bash
+   npm install
+   ```
+
+### Running the Algorithm
+
+The function can be imported and run in a JavaScript file as follows:
+
+```javascript
+const dijkstra = require('./dijkstra');
+
+let graph = [
+    [0, 2, 0, 1, 0],
+    [2, 0, 3, 0, 0],
+    [0, 3, 0, 4, 0],
+    [1, 0, 4, 0, 5],
+    [0, 0, 0, 5, 0]
+];
+
+let startProduct = 0;
+let distances = dijkstra(graph, startProduct);
+console.log("Minimum distances from product", startProduct, ":", distances);
+```
+
+### Example Output
+
+Running the above code will produce an output showing the minimum distances from the `startProduct` to each other product.
+
+```plaintext
+Minimum distances from product 0: [0, 2, 5, 1, 6]
+```
+
+### Testing
+
+This project includes a basic test. Run test with:
+
+```bash
+npm test
+```
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## Contributing
 
-- The algorithm is based on Dijkstra's shortest path algorithm, which was developed by Edsger W. Dijkstra.
-- The code example demonstrates a basic application of the algorithm for learning purposes.
+Contributions are welcome! Please feel free to submit a pull request or open an issue if you have suggestions for improvements.
+
+---
+
+Happy coding!
